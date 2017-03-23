@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 module CooperApi
   class Application < Rails::Application
     Bundler.require(*Rails.groups)
+    config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
@@ -27,6 +28,5 @@ module CooperApi
                       max_age: 0
       end
     end
-    config.api_only = true
   end
 end
