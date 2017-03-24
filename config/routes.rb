@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :ping, only: [:index], constraints: { format: 'json' }
     end
     namespace :v1, defaults: { format: :json } do
-      mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+      mount_devise_token_auth_for 'User', at: 'auth'
       resources :performance_data, only: [:create, :index, :destroy]
     end
   end
