@@ -16,13 +16,6 @@ class Api::V1::PerformanceDataController < ApplicationController
      render json: { entries: @collection }
   end
 
-  def destroy
-      signed_out = (PerformanceData.sign_out_all_scopes ? sign_out : sign_out(user: current_api_v1_user))
-      set_flash_message! :notice, :signed_out if signed_out
-      yield if block_given?
-      respond_to_on_destroy
-  end
-
   private
 
   def performance_data_params
